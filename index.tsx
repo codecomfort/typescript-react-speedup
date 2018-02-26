@@ -1,11 +1,23 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import User from "./components/user";
 
-import App from "./components/App";
+const App = () => (
+  <div>
+    <User
+      name="Hiro"
+      highlighted={false}
+      userSelected={() => console.log('yay!')}
+    />
+    <User
+      name="Kazu"
+      highlighted={true}
+      userSelected={() => console.log('yay!')}
+    />
+  </div>
+);
 
 ReactDOM.render(
-  <div className="container">
-    <App />
-    </div>,
-document.getElementById("root")
+  <App />,
+  document.getElementById("root")
 );
