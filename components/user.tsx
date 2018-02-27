@@ -16,7 +16,7 @@ const User: SFC<UserProps> = (props) => {
         props.userSelected();
       }}
     >
-      {name}
+      {props.name}
     </h3>
   </div>;
 };
