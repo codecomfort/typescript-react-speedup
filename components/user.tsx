@@ -3,7 +3,7 @@ import * as React from 'react';
 interface UserProps {
   name: string;
   highlighted: boolean;
-  userSelected: () => void;
+  userSelected: (name: string) => void;
 }
 
 class User extends React.PureComponent<UserProps, {}> {
@@ -15,7 +15,7 @@ class User extends React.PureComponent<UserProps, {}> {
       <h3
         style={{fontStyle: props.highlighted ? 'italic' : 'normal'}}
         onClick={event => {
-          props.userSelected();
+          props.userSelected(props.name);
         }}
       >
         {props.name}

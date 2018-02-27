@@ -37,16 +37,17 @@ class App extends React.Component<AppProps, AppState> {
       });
   }
 
-  toggleUserHighlight(user: IUser) {
+  toggleUserHighlight = (name: string) => {
     this.setState(prevState => ({
       users: prevState.users.map(u => {
-        if (u.name === user.name) {
+        if (u.name === name) {
           u.highlighted = !u.highlighted;
         }
         return u;
       }),
     }));
   }
+
 
   render() {
     return <div>
@@ -57,9 +58,7 @@ class App extends React.Component<AppProps, AppState> {
             key={u.name}
             name={u.name}
             highlighted={u.highlighted}
-            userSelected={() => {
-              this.toggleUserHighlight(u);
-            }}
+            userSelected={this.toggleUserHighlight}
           />;
         })
       }
