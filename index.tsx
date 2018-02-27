@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import User from "./components/user";
 
-interface IUser {
+export interface IUser {
   name: string;
   highlighted: boolean;
 }
@@ -37,11 +37,14 @@ class App extends React.Component<AppProps, AppState> {
       });
   }
 
-  toggleUserHighlight = (name: string) => {
+  toggleUserHighlight = (user: IUser) => {
     this.setState(prevState => ({
       users: prevState.users.map(u => {
-        if (u.name === name) {
-          u.highlighted = !u.highlighted;
+        if (u.name === user.name) {
+          return {
+            name: u.name,
+            highlighted: !u.highlighted,
+          };
         }
         return u;
       }),
@@ -56,8 +59,7 @@ class App extends React.Component<AppProps, AppState> {
         this.state.users.map(u => {
           return <User
             key={u.name}
-            name={u.name}
-            highlighted={u.highlighted}
+            user={u}
             userSelected={this.toggleUserHighlight}
           />;
         })

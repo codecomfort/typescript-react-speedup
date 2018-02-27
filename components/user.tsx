@@ -1,24 +1,24 @@
 import * as React from 'react';
+import {IUser} from "../index";
 
 interface UserProps {
-  name: string;
-  highlighted: boolean;
-  userSelected: (name: string) => void;
+  user: IUser;
+  userSelected: (user: IUser) => void;
 }
 
 class User extends React.PureComponent<UserProps, {}> {
 
   render() {
     const { props } = this;
-    console.log("ユーザーをレンダリング中:", [props.name, props.highlighted]);
+    console.log("ユーザーをレンダリング中:", [props.user.name, props.user.highlighted]);
     return <div>
       <h3
-        style={{fontStyle: props.highlighted ? 'italic' : 'normal'}}
+        style={{fontStyle: props.user.highlighted ? 'italic' : 'normal'}}
         onClick={event => {
-          props.userSelected(props.name);
+          props.userSelected(props.user);
         }}
       >
-        {props.name}
+        {props.user.name}
       </h3>
     </div>;
   };
