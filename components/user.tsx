@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {SFC} from "react";
 
 interface UserProps {
   name: string;
@@ -7,11 +6,7 @@ interface UserProps {
   userSelected: () => void;
 }
 
-class User extends React.Component<UserProps, {}> {
-
-  shouldComponentUpdate(nextProps: UserProps) {
-    return nextProps.name !== this.props.name || nextProps.highlighted !== this.props.highlighted;
-  }
+class User extends React.PureComponent<UserProps, {}> {
 
   render() {
     const { props } = this;
