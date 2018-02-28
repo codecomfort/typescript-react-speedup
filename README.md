@@ -2,8 +2,8 @@
 ステートレスなコンポーネントによるReactのパフォーマンス最適化  
 https://www.webprofessional.jp/optimizing-react-performance-stateless-components/
 
-# 試した所感
 
+# 試した感想
 - 何も考えずに実装してると、知らずに遅くなっている
   - その理由は、意図せず大量の re-render が走っているため
 - shouldComponentUpdate でやるのは、大抵の場合はツライ
