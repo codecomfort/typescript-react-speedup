@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {pure} from 'recompose';
+import {onlyUpdateForKeys} from 'recompose';
 import {SFC} from "react";
 
 interface UserProps {
@@ -22,4 +22,4 @@ const User: SFC<UserProps> = (props) => {
   </div>;
 };
 
-export default pure<UserProps>(User);
+export default onlyUpdateForKeys<UserProps>(['name', 'highlighted'])(User);
