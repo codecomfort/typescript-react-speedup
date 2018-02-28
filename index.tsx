@@ -41,10 +41,7 @@ class App extends React.Component<AppProps, AppState> {
     this.setState(prevState => ({
       users: prevState.users.map(u => {
         if (u.name === user.name) {
-          return {
-            name: u.name,
-            highlighted: !u.highlighted,
-          };
+          u.highlighted = !u.highlighted;
         }
         return u;
       }),
@@ -59,8 +56,9 @@ class App extends React.Component<AppProps, AppState> {
         this.state.users.map(u => {
           return <User
             key={u.name}
-            user={u}
-            userSelected={this.toggleUserHighlight}
+            name={u.name}
+            highlighted={u.highlighted}
+            userSelected={() => this.toggleUserHighlight(u)}
           />;
         })
       }

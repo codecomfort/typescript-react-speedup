@@ -1,27 +1,25 @@
 import * as React from 'react';
-import {IUser} from "../index";
+import {pure} from 'recompose';
+import {SFC} from "react";
 
 interface UserProps {
-  user: IUser;
-  userSelected: (user: IUser) => void;
+  name: string;
+  highlighted: boolean;
+  userSelected: () => void;
 }
 
-class User extends React.PureComponent<UserProps, {}> {
+const User: SFC<UserProps> = (props) => {
+  console.log("ユーザーをレンダリング中:", [props.name, props.highlighted]);
+  return <div>
+    <h3
+      style={{fontStyle: props.highlighted ? 'italic' : 'normal'}}
+      onClick={event => {
+        props.userSelected();
+      }}
+    >
+      {props.name}
+    </h3>
+  </div>;
+};
 
-  render() {
-    const { props } = this;
-    console.log("ユーザーをレンダリング中:", [props.user.name, props.user.highlighted]);
-    return <div>
-      <h3
-        style={{fontStyle: props.user.highlighted ? 'italic' : 'normal'}}
-        onClick={event => {
-          props.userSelected(props.user);
-        }}
-      >
-        {props.user.name}
-      </h3>
-    </div>;
-  };
-}
-
-export default User;
+export default pure<UserProps>(User);
